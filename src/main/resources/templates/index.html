@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600">
+
+<div class="bg-white rounded-xl shadow-xl p-8 w-80 text-center">
+    <h1 class="text-2xl font-bold mb-6">Hello World 👋</h1>
+
+    <form th:action="@{/sayHello}" method="post" class="space-y-4">
+        <div class="text-left">
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">
+                Dein Name
+            </label>
+            <input
+                id="name"
+                name="name"
+                required
+                class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="Name eingeben..."
+            >
+        </div>
+
+        <button
+            type="submit"
+            class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition"
+        >
+            Say Hello
+        </button>
+    </form>
+
+    <p class="mt-6 text-lg"
+       th:if="${name != null and !#strings.isEmpty(name)}">
+        Hallo, <span class="font-bold text-indigo-600" th:text="${name}"></span>! 😊
+    </p>
+</div>
+
+</body>
+</html>
